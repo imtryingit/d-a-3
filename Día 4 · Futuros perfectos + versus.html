@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Día 4 · Futuros perfectos + versus</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f7f8fb;--sf:#fff;--ink:#1b2233;--mu:#596277;--ln:#dfe3ec;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--sf:#1c212c;--ink:#edf0f7;--mu:#a3adc0;--ln:#2c3345;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151d;--sf:#1c212c;--ink:#edf0f7;--mu:#a3adc0;--ln:#2c3345;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5rem}
+header{padding:1.2rem 1rem .4rem;max-width:900px;margin:auto}
+header h1{font-size:clamp(1.6rem,5vw,2.3rem)}
+header p{margin:0;color:var(--mu)}
+nav{display:flex;gap:.4rem;max-width:900px;margin:.6rem auto 0;padding:0 1rem;flex-wrap:wrap}
+nav a{padding:.5rem .9rem;border-radius:999px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem}
+nav a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{max-width:900px;margin:auto;padding:1rem}
+section[hidden]{display:none}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:1.1rem;margin-bottom:1rem}
+.w{--c:#888;display:inline-block;padding:1px 6px;border-radius:6px;background:color-mix(in srgb,var(--c) 22%,transparent);border-bottom:2px solid var(--c);margin:2px 1px}
+.s{--c:#2f7de1}.b{--c:#e08a00}.v{--c:#0f9d8a}.c{--c:#8791a5}.cn,[data-k=cn]{--c:#5aa626;font-weight:700}
+[data-k=fs]{--c:#2f7de1}[data-k=fp]{--c:#8b5cf6}[data-k=fpc]{--c:#d6409f}[data-k=pc]{--c:#0f9d8a}[data-k=ppc]{--c:#e08a00}[data-k=ps]{--c:#7b8496}
+.sent{font-size:clamp(1.1rem,3.4vw,1.5rem);line-height:2.1;font-weight:500}
+.es{color:var(--mu);font-style:italic;margin:.2rem 0 .6rem}
+.row{display:flex;flex-wrap:wrap;gap:.4rem}
+button{font:inherit;cursor:pointer;border:1px solid var(--ln);background:var(--sf);color:var(--ink);border-radius:10px;padding:.45rem .8rem}
+button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,nav a:focus-visible,mark:focus-visible{outline:3px solid #2f7de1;outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem}
+.mini{border:1px solid var(--ln);border-radius:12px;padding:.8rem;border-top:4px solid var(--c,var(--ln))}
+.mini small{color:var(--mu);display:block}
+/* línea de tiempo */
+.tl{position:relative;height:104px;margin:.4rem 0 .8rem}
+.tl:before{content:"";position:absolute;left:0;right:0;top:44px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--ln),color-mix(in srgb,var(--ink) 35%,var(--ln)))}
+.tl span{position:absolute;white-space:nowrap;font-size:.76rem;color:var(--mu);transform:translateX(-50%)}
+.flag{position:absolute;top:26px;width:3px;height:40px;background:var(--c,var(--ink));border-radius:2px}
+.flag span{top:68px;left:1px}
+.dot2{position:absolute;top:36px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--c);border:4px solid var(--sf);box-shadow:0 0 0 2px var(--c)}
+.dot2 span{bottom:30px;left:11px;color:var(--ink);font-weight:600}
+.bar{position:absolute;top:38px;height:18px;border-radius:9px;background:color-mix(in srgb,var(--c) 55%,transparent);border:2px solid var(--c)}
+.bar span{top:-22px;left:50%;color:var(--ink);font-weight:600}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs>div{border:1px solid var(--ln);border-radius:12px;padding:.8rem;border-top:4px solid var(--c)}
+/* ruleta */
+.wheelbox{--sz:min(380px,88vw);position:relative;width:var(--sz);height:var(--sz);margin:1.2rem auto}
+#wheel{width:100%;height:100%;border-radius:50%;position:relative;border:8px solid var(--ink);box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 0 0 4px var(--sf);transition:transform 4.2s cubic-bezier(.12,.7,.1,1)}
+#wheel:before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 62%)}
+#wheel:after{content:"";position:absolute;inset:6px;border-radius:50%;background:repeating-conic-gradient(rgba(255,255,255,.85) 0 .8deg,transparent .8deg 5.625deg);-webkit-mask:radial-gradient(circle,transparent 94%,#000 95%);mask:radial-gradient(circle,transparent 94%,#000 95%)}
+#wheel span{position:absolute;left:50%;top:50%;width:0;height:0;z-index:1}
+#wheel u{position:absolute;left:-46px;width:92px;top:calc(var(--sz) * -.4);text-align:center;text-decoration:none;font-size:.7rem;font-weight:700;line-height:1.15;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+#wheel u b{display:block;font-size:1.35rem}
+.pin{position:absolute;left:50%;top:-14px;margin-left:-14px;border:14px solid transparent;border-top:26px solid #e0364f;border-bottom:0;z-index:4;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4))}
+.hub{position:absolute;left:50%;top:50%;width:26%;height:26%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a5578,#141a2b);color:#fff;font-weight:800;border:4px solid var(--sf);box-shadow:0 4px 12px rgba(0,0,0,.4);z-index:3;padding:0}
+.q{font-size:1.3rem;font-family:Georgia,serif;margin:.5rem 0}
+.model{display:none;margin-top:.8rem;padding:.8rem 1rem;border-radius:10px;background:color-mix(in srgb,var(--ink) 6%,transparent);line-height:2}
+.model.open{display:block}
+.why{display:block;margin-top:.4rem;color:var(--mu);font-size:.92rem;line-height:1.5}
+.timer{font:700 1.6rem Georgia,serif;margin-left:.6rem}
+.txt{font-family:Georgia,serif;font-size:1.12rem;line-height:2.1;max-width:64ch}
+mark.w{color:inherit;cursor:pointer;transition:opacity .2s}
+.plain mark.w{background:none;border-color:transparent;font-weight:400}
+.dot{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;background:var(--c);margin-right:.35rem;vertical-align:-1px}
+#info{min-height:3.2rem;padding:.7rem 1rem;border-left:5px solid var(--c,var(--ln));background:var(--sf);border-radius:8px;margin:.8rem 0}
+@media (prefers-reduced-motion:reduce){#wheel{transition:none}}
+</style></head><body>
+<header><h1>Día 4 · Futuros perfectos + versus</h1><p>Future Perfect y Future Perfect Continuous. Conectores: by, by the time, for, since, although.</p></header>
+<nav id="nav"><a href="#explicacion">1 · Explicación</a><a href="#ruleta">2 · Ruleta de speaking</a><a href="#textos">3 · Textos B2+</a></nav>
+<main>
+
+<section id="explicacion">
+
+
+<div class="card"><h2>Las dos fórmulas</h2>
+<div class="sent"><span class="w s">Sujeto</span> + <span class="w b">will have</span> + <span class="w v">participio</span> + <span class="w c">complemento</span></div>
+<p style="margin:0 0 .8rem;color:var(--mu)">Future Perfect: algo ya habrá terminado antes de un límite.</p>
+<div class="sent"><span class="w s">Sujeto</span> + <span class="w b">will have been</span> + <span class="w v">verbo-ing</span> + <span class="w c">complemento</span></div>
+<p style="margin:0;color:var(--mu)">Future Perfect Continuous: cuánto tiempo llevará pasando hasta ese límite.</p></div>
+
+<div class="card"><h2>Explora los dos tiempos</h2>
+<div class="row" id="tb"></div><div class="row" id="fb" style="margin-top:.5rem"></div>
+<div id="tl1"></div>
+<div class="sent" id="sent"></div><div class="es" id="es"></div><p id="tip" style="margin:0"></p></div>
+
+<div class="card"><h2>Future Perfect Continuous a fondo</h2>
+<p><b>Idea central:</b> no importa si algo terminó, importa <b>cuánto tiempo llevará en marcha</b> cuando llegue un momento futuro. Es pararte en el futuro, mirar hacia atrás y contar.</p>
+<h3 style="font-size:1.05rem">Cómo se arma, pieza por pieza</h3>
+<div class="grid" style="margin-bottom:1rem">
+<div class="mini" style="--c:#2f7de1"><span class="w s">will</span><small>futuro</small>Hablamos de un momento que todavía no llega.</div>
+<div class="mini" style="--c:#e08a00"><span class="w b">have</span><small>perfecto</small>Desde ese momento futuro, miramos hacia atrás.</div>
+<div class="mini" style="--c:#d6409f"><span class="w" style="--c:#d6409f">been</span><small>participio de to be</small>Une el perfecto con lo continuo. Nunca cambia.</div>
+<div class="mini" style="--c:#0f9d8a"><span class="w v">verbo-ing</span><small>acción en proceso</small>La actividad que se mantiene durante todo ese tiempo.</div></div>
+<h3 style="font-size:1.05rem">Mueve el límite y cuenta el tiempo</h3>
+<p style="margin:.2rem 0">Hoy llevas 2 años estudiando inglés. ¿Hasta cuándo quieres contar?</p>
+<input type="range" id="sl" min="2" max="8" value="4" style="width:100%" aria-label="Años hasta el límite">
+<div id="tl2"></div><div class="sent" id="s2"></div><div class="es" id="e2"></div>
+<h3 style="font-size:1.05rem;margin-top:1rem">¿Resultado o duración?</h3>
+<div class="vs" style="margin-bottom:1rem">
+<div style="--c:#8b5cf6"><b>Future Perfect: resultado</b><div class="sent" style="font-size:1.05rem;line-height:1.6">By 6 pm, I will have written three reports.</div><div class="es">Importa qué quedó terminado: tres informes.</div></div>
+<div style="--c:#d6409f"><b>Future Perfect Continuous: duración</b><div class="sent" style="font-size:1.05rem;line-height:1.6">By 6 pm, I will have been writing reports for five hours.</div><div class="es">Importa cuánto tiempo llevaré haciéndolo: cinco horas.</div></div></div>
+<h3 style="font-size:1.05rem">Cuándo lo usas</h3>
+<div class="grid" style="margin-bottom:1rem">
+<div class="mini" style="--c:#d6409f"><b>Metas</b><br><i>By 2030, I will have been working abroad for three years.</i><small>Para 2030 llevaré tres años trabajando fuera.</small></div>
+<div class="mini" style="--c:#d6409f"><b>Aniversarios</b><br><i>Next May, they will have been married for ten years.</i><small>En mayo cumplirán diez años de casados.</small></div>
+<div class="mini" style="--c:#d6409f"><b>Predicciones</b><br><i>By the time he retires, he will have been teaching for 40 years.</i><small>Cuando se jubile, llevará 40 años enseñando.</small></div></div>
+<h3 style="font-size:1.05rem">Errores típicos</h3>
+<div class="grid">
+<div class="mini" style="--c:#dc3b3b"><s style="color:#dc3b3b">I will have been study.</s><br><b>I will have been studying.</b><small>Después de been, siempre -ing.</small></div>
+<div class="mini" style="--c:#dc3b3b"><s style="color:#dc3b3b">…will have been studying since 2024.</s><br><b>…will have been studying for three years.</b><small>En futuro se usa for, no since.</small></div>
+<div class="mini" style="--c:#dc3b3b"><s style="color:#dc3b3b">I will have been knowing him.</s><br><b>I will have known him for ten years.</b><small>Verbos de estado (know, be, own) no van en continuo.</small></div>
+<div class="mini" style="--c:#dc3b3b"><s style="color:#dc3b3b">I will have been studying.</s><br><b>By June, I will have been studying for two years.</b><small>Siempre necesita un límite en el futuro y una duración.</small></div></div></div>
+
+<div class="card"><h2>Conectores del día</h2><div class="grid" id="cn"></div></div>
+
+<div class="card"><h2>Versus: ¿cuál uso?</h2>
+<div class="row" id="vb" style="margin-bottom:.8rem"></div><div class="vs" id="vs"></div></div>
+</section>
+
+<section id="ruleta" hidden>
+<div class="card" style="text-align:center"><h2>Ruleta de speaking</h2>
+<p style="margin:0">Gira, responde en voz alta durante 60 segundos y luego revisa el ejemplo modelo.</p>
+<div class="wheelbox"><div class="pin"></div><div id="wheel"></div><button class="hub" id="spin" aria-label="Girar la ruleta">GIRA</button></div>
+<div id="out" style="text-align:left;min-height:8rem"><p style="text-align:center;color:var(--mu)">Tu pregunta aparece aquí.</p></div></div>
+</section>
+
+<section id="textos" hidden>
+<div class="card"><h2>Lee y detecta</h2>
+<p>Cada color es un tiempo. Los conectores van en verde y negrita. Toca una frase para ver su estructura.</p>
+<div class="row" id="lg"></div><div id="info">Toca una frase de color.</div>
+<button id="chal">Modo reto: ocultar colores</button></div>
+<div id="tx"></div>
+</section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const NM={fs:['Future Simple','will + verbo base'],fp:['Future Perfect','will have + participio'],fpc:['Future Perfect Continuous','will have been + verbo-ing'],pc:['Present Continuous','am / is / are + verbo-ing'],ppc:['Present Perfect Continuous','have / has been + verbo-ing'],ps:['Presente simple tras by the time','by the time + presente simple, nunca will'],cn:['Conector','by · by the time · for · since · although']};
+const MK=s=>s.replace(/\[\[(\w+)\|([^\]]+)\]\]/g,'<mark class="w" data-k="$1" tabindex="0">$2</mark>');
+const L=s=>s.split('|').map(p=>{const[k,...x]=p.split(':');return `<span class="w ${k}">${x.join(':')}</span>`}).join(' ');
+function sh(){const h=(location.hash||'#explicacion').slice(1);['explicacion','ruleta','textos'].forEach(i=>{$('#'+i).hidden=i!==h});document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.hash==='#'+h))}
+addEventListener('hashchange',sh);sh();
+function TL(items){return '<div class="tl">'+items.map(i=>{const st=`style="--c:${i.c||'var(--ink)'};left:${i.x}%${i.y?`;width:${i.y-i.x}%`:''}"`;
+return i.t==='bar'?`<div class="bar" ${st}><span>${i.l}</span></div>`:i.t==='dot'?`<div class="dot2" ${st}><span>${i.l}</span></div>`:`<div class="flag" ${st}><span>${i.l}</span></div>`}).join('')+'</div>'}
+const NOW={t:'flag',x:12,l:'ahora'};
+const TLS={
+fp:l=>[NOW,{t:'flag',x:80,l,c:'#e0364f'},{t:'dot',x:50,l:'✓ ya terminó',c:'#8b5cf6'}],
+fpc:l=>[{t:'bar',x:4,y:80,l:'duración acumulada',c:'#d6409f'},NOW,{t:'flag',x:80,l,c:'#e0364f'}],
+fs:()=>[NOW,{t:'flag',x:70,l:'las 6:00',c:'#e0364f'},{t:'dot',x:70,l:'ocurre a las 6',c:'#2f7de1'}],
+fp6:()=>[NOW,{t:'flag',x:70,l:'las 6:00',c:'#e0364f'},{t:'dot',x:42,l:'✓ listo antes de las 6',c:'#8b5cf6'}],
+pc:()=>[{t:'bar',x:40,y:60,l:'en curso ahora',c:'#0f9d8a'},{t:'flag',x:50,l:'ahora'}],
+ppc:()=>[{t:'bar',x:12,y:50,l:'for 2 hours / since 8 am',c:'#e08a00'},{t:'flag',x:50,l:'ahora'}]};
+/* explorador */
+const T=[['Future Perfect','fp','Acción TERMINADA antes de un límite. Pide marcador de tiempo: by, by the time. En by the time, la cláusula va en presente simple.','2030',[
+['cn:By 2030,|s:I|b:will have|v:finished|c:my degree','Para 2030 habré terminado mi carrera.'],
+['cn:By the time|c:the class starts,|s:she|b:will not have|v:arrived','Cuando empiece la clase, ella no habrá llegado.'],
+['b:Will|s:they|b:have|v:finished|c:the project|cn:by Friday?','¿Habrán terminado el proyecto para el viernes?']]],
+['Future Perfect Continuous','fpc','Duración ACUMULADA hasta un límite futuro. Enfatiza cuánto tiempo, con for. No uses since en futuro: since va con Present Perfect Continuous.','junio',[
+['cn:By June,|s:I|b:will have been|v:studying|c:English|cn:for|c:two years','Para junio habré estado estudiando inglés durante dos años.'],
+['cn:By then,|s:he|b:will not have been|v:working|c:here|cn:for|c:long','Para entonces no habrá estado trabajando aquí por mucho tiempo.'],
+['c:How long|b:will|s:you|b:have been|v:living|c:here|cn:by next year?','¿Cuánto tiempo llevarás viviendo aquí para el próximo año?']]]];
+let ti=0,fi=0;
+function draw(){const t=T[ti],f=t[4][fi];$('#tl1').innerHTML=TL(TLS[t[1]](t[3]));$('#sent').innerHTML=L(f[0]);$('#es').textContent=f[1];$('#tip').innerHTML='<b>'+t[0]+':</b> '+t[2];
+document.querySelectorAll('#tb button').forEach((b,i)=>b.classList.toggle('on',i===ti));document.querySelectorAll('#fb button').forEach((b,i)=>b.classList.toggle('on',i===fi))}
+T.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.onclick=()=>{ti=i;draw()};$('#tb').append(b)});
+['Afirmativa','Negativa','Pregunta'].forEach((n,i)=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>{fi=i;draw()};$('#fb').append(b)});draw();
+/* FPC a fondo */
+function sl2(){const n=+$('#sl').value,tot=2+n,dl=20+8*n;$('#tl2').innerHTML=TL([{t:'bar',x:4,y:dl,l:'llevarás '+tot+' años',c:'#d6409f'},{t:'flag',x:4,l:'inicio'},{t:'flag',x:20,l:'hoy',c:'#2f7de1'},{t:'flag',x:dl,l:'límite',c:'#e0364f'}]);$('#s2').innerHTML=L(`cn:In ${n} years,|s:I|b:will have been|v:studying|c:English|cn:for|c:${tot} years`);$('#e2').textContent=`Dentro de ${n} años llevaré ${tot} años estudiando inglés.`}
+$('#sl').oninput=sl2;sl2();
+/* conectores */
+[['by','Límite: “a más tardar”. No es until.','I will have finished by Friday.','Habré terminado para el viernes.'],['by the time','Va con presente simple; la otra parte, futuro perfecto.','By the time you arrive, I will have left.','Cuando llegues, ya me habré ido.'],['for','Duración: cuánto tiempo.','I will have been studying for two years.','Habré estado estudiando durante dos años.'],['since','Punto de inicio. Con Present Perfect Continuous.','I have been studying since 2023.','Llevo estudiando desde 2023.'],['although','Contraste: aunque.','Although I will have studied, I will feel nervous.','Aunque habré estudiado, me sentiré nervioso.']].forEach(c=>{const d=document.createElement('div');d.className='mini';d.style.setProperty('--c','#5aa626');d.innerHTML=`<h3><span class="w cn">${c[0]}</span></h3>${c[1]}<br><i>${c[2]}</i><small>${c[3]}</small>`;$('#cn').append(d)});
+/* versus */
+const V=[['Future Simple vs Future Perfect',[['fs','Future Simple','will + verbo','I will call you at 6.','Te llamaré a las 6: la llamada ocurre justo a las 6.',TLS.fs()],['fp','Future Perfect','will have + participio','I will have called you by 6.','Te habré llamado para las 6: ya estará hecho antes.',TLS.fp6()]]],
+['Present Continuous vs Present Perfect Continuous',[['pc','Present Continuous','am / is / are + -ing','I am studying English.','Estoy estudiando ahora; acción en curso, temporal.',TLS.pc()],['ppc','Present Perfect Continuous','have / has been + -ing','I have been studying English for two hours.','Llevo dos horas estudiando: importa cuánto tiempo.',TLS.ppc()]]]];
+let vi=0;
+function vdraw(){$('#vs').innerHTML=V[vi][1].map(x=>`<div style="--c:${x[0]==='fs'?'#2f7de1':x[0]==='fp'?'#8b5cf6':x[0]==='pc'?'#0f9d8a':'#e08a00'}"><b>${x[1]}</b><br><small>${x[2]}</small>${TL(x[5])}<div class="sent" style="font-size:1.1rem;line-height:1.6">${x[3]}</div><div class="es">${x[4]}</div></div>`).join('');document.querySelectorAll('#vb button').forEach((b,i)=>b.classList.toggle('on',i===vi))}
+V.forEach((v,i)=>{const b=document.createElement('button');b.textContent=v[0];b.onclick=()=>{vi=i;vdraw()};$('#vb').append(b)});vdraw();
+/* ruleta */
+const W=[['✅','Future Perfect','#8b5cf6',[['What will you have achieved by the end of this year?','[[cn|By December]], I [[fp|will have passed]] my B2 exam and [[fp|will have saved]] enough money to travel.','Hay un límite (diciembre) y las dos acciones estarán terminadas antes: will have + participio.'],['What will you have finished by the time this class ends?','[[cn|By the time]] this class [[ps|ends]], I [[fp|will have written]] two pages and [[fp|will have learned]] every rule.','Tras by the time va presente simple (ends); en la otra parte, futuro perfecto.']],'By…, I will have…'],
+['⏳','Future Perfect Cont.','#d6409f',[['How long will you have been learning English by next year?','[[cn|By next year]], I [[fpc|will have been learning]] English [[cn|for]] three years.','Importa la duración acumulada hasta el límite: will have been + -ing, con for.'],['What will you have been doing for a long time by the time you are 30?','[[cn|By the time]] I [[ps|am]] 30, I [[fpc|will have been working]] as a teacher [[cn|for]] eight years.','Mira la cuenta: eight years es duración, por eso usamos la forma continua.']],'By the time…, I will have been…ing'],
+['📅','by','#5aa626',[['What will you have done by next Friday?','[[cn|By next Friday]], I [[fp|will have sent]] all my emails.','By marca un límite: “a más tardar el viernes”, quizá antes. No significa “hasta”.'],['What will you have bought by the end of the month?','[[cn|By the end of the month]], I [[fp|will have bought]] a new laptop.','By + fecha límite + will have + participio.']],'By…, I will have…'],
+['🚦','by the time','#5aa626',[['By the time you get home tonight, what will you have done?','[[cn|By the time]] I [[ps|get]] home, I [[fp|will have cooked]] dinner.','By the time + presente simple (get). Nunca “by the time I will get”.'],['By the time you are 40, what will have changed?','[[cn|By the time]] I [[ps|am]] 40, technology [[fp|will have changed]] completely.','El sujeto de la segunda parte puede ser otro: no solo “I”.']],'By the time I…, I will have…'],
+['🧮','for / since','#e08a00',[['How long have you been studying English? And by next year?','I [[ppc|have been studying]] English [[cn|since]] 2023, that is [[cn|for]] three years. [[cn|By]] 2027, I [[fpc|will have been studying]] [[cn|for]] four years.','Since = punto de inicio (2023). For = duración (three years). En futuro solo usamos for.'],['What have you been doing lately for a long time?','I [[ppc|have been reading]] the same book [[cn|for]] two weeks and [[cn|since]] Monday I [[ppc|have been reading]] only at night.','Los dos conectores se usan en Present Perfect Continuous; la diferencia es duración vs inicio.']],'I have been…ing since / for…'],
+['⚖️','although','#5aa626',[['What might still be hard for you although you will have practised a lot?','[[cn|Although]] I [[fpc|will have been practising]] for months, I probably [[fs|will feel]] nervous speaking.','Although une dos ideas opuestas: mucho trabajo, pero todavía nervios.'],['Although you will have studied hard, what could go wrong?','[[cn|Although]] I [[fp|will have studied]] hard, I might forget a key word.','Although + oración completa, con sujeto y verbo.']],'Although I will have…, I…'],
+['🔮','Future Simple vs Perfect','#2f7de1',[['What will you do at 8 pm tonight, and what will you have done by 8 pm?','At 8 pm I [[fs|will watch]] a series, but [[cn|by]] 8 pm I [[fp|will have finished]] my homework.','Will watch: ocurre a las 8. Will have finished: ya terminó antes de las 8.'],['What will you do tomorrow, and what will you have done by tomorrow night?','Tomorrow I [[fs|will visit]] my aunt, and [[cn|by]] tomorrow night I [[fp|will have bought]] her a gift.','Mismo límite, dos fotos distintas: acción en el momento o acción ya cerrada.']],'At…, I will… / By…, I will have…'],
+['🎬','Continuous vs Perfect Cont.','#0f9d8a',[['What are you doing right now? What have you been doing all day?','I [[pc|am answering]] this question, and I [[ppc|have been teaching]] [[cn|since]] 8 am.','Am answering: ahora mismo. Have been teaching: desde las 8 hasta ahora.'],['What are you reading now? How long have you been reading it?','I [[pc|am reading]] a novel, and I [[ppc|have been reading]] it [[cn|for]] two weeks.','Presente continuo: foto del momento. Perfecto continuo: película de la duración.']],'I am…ing / I have been…ing for…']];
+const n=W.length,a=360/n;let rot=0,busy=false,cur=0,qi=W.map(()=>0),tm=null;
+$('#wheel').style.background='conic-gradient('+W.map((w,i)=>`${w[2]} ${i*a}deg ${(i+1)*a}deg`).join(',')+')';
+W.forEach((w,i)=>{const s=document.createElement('span');s.style.transform=`rotate(${(i+.5)*a}deg)`;s.innerHTML=`<u><b>${w[0]}</b>${w[1]}</u>`;$('#wheel').append(s)});
+function show(){clearInterval(tm);const w=W[cur],q=w[3][qi[cur]%2];$('#out').innerHTML=`<span class="w" style="--c:${w[2]}">${w[0]} ${w[1]}</span><div class="q">${q[0]}</div><div>Empieza con: <span class="w" style="--c:${w[2]}">${w[4]}</span></div>
+<div class="row" style="margin-top:.8rem;align-items:center"><button id="tmb">⏱ 60 s</button><span class="timer" id="tmr"></span><button id="mb">Ver ejemplo modelo</button><button id="nx">Otra pregunta</button></div>
+<div class="model" id="mod">${MK(q[1])}<span class="why">${q[2]}</span></div>`;
+$('#mb').onclick=()=>$('#mod').classList.toggle('open');$('#nx').onclick=()=>{qi[cur]++;show()};
+$('#tmb').onclick=()=>{clearInterval(tm);let t=60;$('#tmr').textContent=t;tm=setInterval(()=>{t--;$('#tmr').textContent=t>0?t:'¡Tiempo!';if(t<=0)clearInterval(tm)},1000)}}
+$('#spin').onclick=()=>{if(busy)return;busy=true;cur=Math.floor(Math.random()*n);const c=(cur+.5)*a;rot+=360*5+((360-c)-(rot%360)+360)%360;$('#wheel').style.transform=`rotate(${rot}deg)`;setTimeout(()=>{busy=false;show()},matchMedia('(prefers-reduced-motion:reduce)').matches?50:4300)};
+/* textos */
+const X=[['My five-year plan','[[cn|By 2030]], I [[fp|will have finished]] my master’s degree and [[fp|will have moved]] abroad. [[cn|By the time]] I [[ps|turn]] thirty, I [[fpc|will have been working]] as an engineer [[cn|for]] almost six years. [[cn|Although]] I [[ppc|have been studying]] English only [[cn|since]] last March, I feel confident. [[cn|This time next year]], I [[fp|will have taken]] the B2 exam, and if I pass, I [[fs|will celebrate]] with my family.'],
+['A startup in numbers','Right now the team [[pc|is building]] a new app, and the founders [[ppc|have been working]] on it [[cn|since]] January. [[cn|By the end of the year]], they [[fp|will have launched]] the beta version. [[cn|By the time]] investors [[ps|visit]] the office in December, the developers [[fpc|will have been testing]] the product [[cn|for]] three months. [[cn|Although]] nobody [[fs|will promise]] success, the founders believe their effort [[fp|will have paid off]].'],
+['The long run','Daniela [[pc|is doing]] her last training session today. She [[ppc|has been preparing]] for the marathon [[cn|since]] October. [[cn|By Sunday]], she [[fp|will have run]] more than 800 kilometres in total. [[cn|By the time]] she [[ps|crosses]] the finish line, she [[fpc|will have been running]] [[cn|for]] about four hours, [[cn|although]] her coach says she [[fs|will be]] fine.']];
+X.forEach(x=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>${x[0]}</h3><p class="txt">${MK(x[1])}</p>`;$('#tx').append(d)});
+let foc=null;
+Object.entries(NM).forEach(([k,v])=>{const b=document.createElement('button');b.dataset.k=k;b.innerHTML=`<span class="dot" data-k="${k}"></span>${v[0]}`;b.onclick=()=>{foc=foc===k?null:k;document.querySelectorAll('#lg button').forEach(x=>x.classList.toggle('on',x.dataset.k===foc));document.querySelectorAll('#tx mark').forEach(m=>m.style.opacity=!foc||m.dataset.k===foc?1:.2)};$('#lg').append(b)});
+function inf(m){const k=m.dataset.k;$('#info').style.setProperty('--c',getComputedStyle(m).getPropertyValue('--c'));$('#info').innerHTML=`<b>${NM[k][0]}</b> · ${NM[k][1]}`}
+$('#tx').addEventListener('click',e=>{if(e.target.matches('mark'))inf(e.target)});
+$('#tx').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('mark'))inf(e.target)});
+$('#chal').onclick=()=>{const p=$('#tx').classList.toggle('plain');$('#chal').textContent=p?'Modo reto: mostrar colores':'Modo reto: ocultar colores'};
+</script></body></html>
